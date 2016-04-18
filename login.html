@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>FaceTUBE - Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="css/styles.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-	<div class="row">
- 		 <div class="col-sm-12">faceTUBE</div>
-	</div>
-	<div class="row">
-	  <div class="col-sm-4">Suggested Friends</div>
-	  <div class="col-sm-8">
-	  	<div class = "row">
-		  	<div class="col-sm-3">Username:</div>
-	  		<div class="col-sm-9">
-	  			<input type = "text" name = "Username">
-		  		&nbsp;
-	  		</div>
-	  	</div>
-	  	<div class = "row">
-		  	<div class="col-sm-3">Password:</div>
-	  		<div class="col-sm-9">
-	  			<input type = "password" name = "Password">
-		  		&nbsp;
-	  		</div>
-	  	</div>
-	  </div>
-	</div>
-	<footer>
-		<div class="row">
-	  	  <div class="col-sm-4">
-	  	  	<a href = "about.html">About us</a>
-	  	  </div>
-		  <div class="col-sm-4">2016 &reg; </div>
-		  <div class="col-sm-4">Page devoleped by: CreateLabs!</div>
+	<div class="container">
+		<header>
+			<div class="row">
+		 		 <div class="col-sm-12"><a href="home.html"><img src="img/Logo.png" height="100px" width="200px"></a></div>
+			</div>
+		</header>
+		<div class="row secondNav">
+		  <div class="col-sm-4">Suggested Friends</div>
+		  <div class="col-sm-8 contact">
+		  	<div class="row boxTag">
+			  	<div class="col-sm-12">
+			  		<div class="input_label user">
+				  		<label for="name"> Name </label>
+				  	</div>
+				  		<input name="name" type="text" id="name" class="name" size="30" value=""> 
+			  	</div>
+		  	</div>
+		  	<div class="row boxTag">
+			  	<div class="col-sm-12">
+			  		<div class="input_label user">
+				  		<label for="password"> Password </label>
+				  	</div>
+				  		<input name="password" type="text" id="password" class="password" size="30" value=""> 
+			  	</div>
+		  	</div>
+		  </div>
 		</div>
-	</footer>
-
+		<footer>
+			<div class="row">
+		  	  <div class="col-sm-4">
+		  	  	<a href = "about.html">About us</a>
+		  	  </div>
+			  <div class="col-sm-4">2016 &reg; </div>
+			  <div class="col-sm-4">Page devoleped by: CreateLabs!</div>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>

@@ -4,27 +4,31 @@
   <title>FaceTUBE - Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link href="css/styles.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="head">
 		<header>
 			<div class="row">
-		 		 <div class="col-sm-12"><a href="home.html"><img src="img/Logo.png" height="100px" width="200px"></a></div>
+		 		 <div class="col-sm-3"><a href="home.html"><img src="img/Logo.png" height="100px" width="250px"></a></div>
+		 		 <div class="col-sm=9" id="slogan">Connecting people with people</div>
 			</div>
 		</header>
+	</div>
+	<div class="container" id="body">
 		<div class="row secondNav">
-		  <div class="col-sm-4">Suggested Friends</div>
+		  <div class="col-sm-4"></div>
 		  <div class="col-sm-8 contact">
 		  	<div class="row boxTag">
 			  	<div class="col-sm-12">
 			  		<div class="input_label user">
-				  		<label for="name"> Name </label>
+				  		<label for="name"> Username </label>
 				  	</div>
-				  		<input name="name" type="text" id="name" class="name" size="30" value=""> 
+				  		<input class="textinput" type="text" id="username" placeholder="Username" size="30" value=""> 
 			  	</div>
 		  	</div>
 		  	<div class="row boxTag">
@@ -32,11 +36,19 @@
 			  		<div class="input_label user">
 				  		<label for="password"> Password </label>
 				  	</div>
-				  		<input name="password" type="text" id="password" class="password" size="30" value=""> 
+				  		<input class="textinput" type="password" id="password" placeholder="**************" size="30" value=""> 
 			  	</div>
+		  	</div>
+		  	<button type="button" class="btn btn-default btn-sm button">Sign In</button>
+		  	<button type="button" class="btn btn-default btn-sm button"><a href="registration.html">Register</a></button>
+		  	<div class="row">
+		  		<div class="col-sm-4"></div>
+		  		<div class="col-sm-8"></div>
 		  	</div>
 		  </div>
 		</div>
+	</div>
+	<div class="container" id="footer2">
 		<footer>
 			<div class="row">
 		  	  <div class="col-sm-4">
@@ -46,6 +58,6 @@
 			  <div class="col-sm-4">Page devoleped by: CreateLabs!</div>
 			</div>
 		</footer>
-	</div>
+	</div>	
 </body>
 </html>

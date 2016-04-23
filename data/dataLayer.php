@@ -77,6 +77,41 @@
         	return array("status" => "ERROR");
         }
     } 
+        # Query to retrieve a user data
+    function validateUser($userName)
+    {
+        # Open and validate the Database connection
+    	$conn = connect();
+
+        if ($conn != null)
+        {
+        	$sql = "SELECT * FROM profile WHERE username = '$userName'";
+			$result = $conn->query($sql);
+			
+			# The current user exists
+			if ($result->num_rows > 0)
+			{
+				while($row = $result->fetch_assoc()) 
+		    	{
+		    		
+					$conn->close();
+					return array("status" => "COMPLETE", "fName" => $row['fName'], "lName" => $row['lName'], "password" => $row['passwrd']);
+				}
+			}
+			else
+			{
+				# The user doesn't exists in the Database
+				$conn->close();
+				return array("status" => "ERROR");
+			}
+        }
+        else
+        {
+        	# Connection to Database was not successful
+        	$conn->close();
+        	return array("status" => "ERROR");
+        }
+    }
 
 
 

@@ -18,7 +18,7 @@ $( document ).on('ready', function() {
         }
 
     });
-           $("#registerButton").on("click", function(){
+    $("#registerButton").on("click", function(){
                 var jsonObject = {
                     "firstName" : $("#fName").val(),
                     "lastName" : $("#lName").val(),
@@ -44,5 +44,27 @@ $( document ).on('ready', function() {
                         alert(errorMsg.statusText);
                     }
                 });
-           });
+    });
+    $("#loginButton").on("click", function(){
+                var jsonObject = {
+                    "username" : $("#username").val(),
+                    "userPassword" : $("#password").val(),
+                    "action" : "LOGIN"
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "data/applicationLayer.php",
+                    dataType: "json",
+                    data: jsonObject,
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function(jsonData) {
+                        window.location.replace("home.html");
+                       
+                    },
+                    error: function(errorMsg){
+                        alert(errorMsg.statusText);
+                    }
+                });
+    });
 });

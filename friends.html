@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+   <title>FaceTUBE - Friends</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="css/styles.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-	<div class="row">
- 		 <div class="col-sm-3">faceTUBE</div>
- 		 <div class="col-sm-5">
- 		 	<input type = "text" name = "Search" size = "60">
- 		 	<span class = "glyphicon glyphicon-search"></span>
- 		 </div>
- 		 <div class="col-sm-2">
- 		 	<a href = "profile.html">Profile</a>
- 		 </div>
- 		 <div class="col-sm-2">Logout</div>
+	<div class="container" id="head">
+		<header>
+			<div class="row">
+		 		 <div class="col-sm-3"><a href="home.html"><img src="img/Logo.png" height="100px" width="250px"></a></div>
+		 		 <div class="col-sm-5 upper">
+		 		 		<input class="textinput" type="text" id="search" placeholder="Search for fun..." size="55" value="">
+		 		 		<span class="glyphicon glyphicon-search" style="color:white"></span>
+		 		 </div>
+		 		 <div class="col-sm-2 upper">
+		 		 	<a href="profile.html">Profile</a>
+		 		 </div>
+		 		 <div class="col-sm-2 upper" style="color:white"><a href="login.html">Logout</a></div>
+			</div>
+		</header>
 	</div>
-	<div class="row">
-		<div class="col-sm-4">Suggested Friends</div>
-	  	<div class="col-sm-8">
-	  		<div class = "row">
-	  			<div class="col-sm-8">
-		  			<h1> My Friends </h1>
-		  		</div>
+	<div class="container" id="body">
+		<div class="row">
+			<div class="col-sm-4">Suggested Friends</div>
+		  	<div class="col-sm-8">
+		  		<div class = "row">
+		  			<div class="col-sm-8">
+			  			<h1> My Friends </h1>
+			  		</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<footer>
-		<div class="row">
-	  	  <div class="col-sm-4">
-	  	  	<a href = "about.html">About us</a>
-	  	  </div>
-		  <div class="col-sm-4">2016 &reg; </div>
-		  <div class="col-sm-4">Page devoleped by: CreateLabs!</div>
-		</div>
-	</footer>
+	<div class="container" id="footer2">
+		<footer>
+			<div class="row">
+		  	  <div class="col-sm-4">
+		  	  	<a href = "about.html">About us</a>
+		  	  </div>
+			  <div class="col-sm-4">2016 &reg; </div>
+			  <div class="col-sm-4">Page devoleped by: CreateLabs!</div>
+			</div>
+		</footer>
+	</div>	
 </body>
 </html>

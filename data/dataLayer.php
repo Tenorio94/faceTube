@@ -43,6 +43,37 @@
 		}
 	}
 	
+	function postVideoL($titleVideo, $linkVideo, $username){
+		$conn = connect();
+
+		if($conn != null){
+			$sql = "INSERT INTO user(username) VALUES ('$username')";
+			$result = $conn->query($sql);
+
+			$sql2 = "INSERT INTO video(username,title,linkVideo) VALUES ('$username','$titleVideo','$linkVideo')";
+			$result2 = $conn->query($sql2);
+			
+			if (mysqli_query($conn, $sql)) 
+	    	{
+	    		# User registered correctly
+	    		$conn->close();
+			    return array("status" => "COMPLETE");
+			} 
+
+			else
+			{
+				$conn->close();
+				return array("status" => "ERROR");
+			}
+		}
+		 else
+        {
+        	# Connection to Database was not successful
+        	$conn->close();
+        	return array("status" => "ERROR");
+        }
+	 }
+	
 	function verifyUser($userName)
     {
     	# Open and validate the Database connection

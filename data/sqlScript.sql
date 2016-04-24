@@ -18,6 +18,7 @@ CREATE TABLE Video(
 	title VARCHAR(30) NOT NULL, 
 	idVideo INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	rating INT NOT NULL,
+	linkVideo VARCHAR(100) NOT NULL,
 	FOREIGN KEY (username) REFERENCES Profile (username)
 
 );

@@ -91,6 +91,33 @@ $( document ).on('ready', function() {
                 });
     });
 
+    $("#postVideo").on("click",function(){
+        var jsonObj = {
+            "titleVideo" : $("#titleVideo").val(),
+            "linkVideo" : $("#linkVideo").val(),
+            "action"  : "POSTVIDEO"
+        };
+        $.ajax({
+            type: "POST",
+            url: "data/applicationLayer.php",
+            dataType: "json",
+            data:jsonObj,
+            contentType: 'application/x-www-form-urlencoded',
+            success : function(jsonData) {
+                alert("Video posted!");
+                window.location.replace("home.html");
+
+            },
+            error : function (errorMsg){
+                alert(errorMsg.statusText);
+            }
+
+        });
+
+
+
+    });
+
 //JSON
     var flag = 0;
     $( "#profile" ).on('click', function(e) {

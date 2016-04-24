@@ -3,7 +3,6 @@ header('Content-type: application/json');
 	require_once __DIR__ . '/dataLayer.php';
 	
 	$action = $_POST['action'];
-
 	switch($action)
 	{
 		case 'REGISTER':registerAction();
@@ -18,8 +17,37 @@ header('Content-type: application/json');
 					break;
 		case "INITSESSION": startSession();
 					break;
+		case "POSTVIDEO" : postVideo();
+					break;
 	}
+	function postVideo(){
 
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			
+		
+			$username = $_SESSION["userName"];
+			$linkVideo = $_POST['linkVideo'];
+			$titleVideo = $_POST['titleVideo'];
+
+		   $result = postVideoL($titleVideo, $linkVideo, $username);
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 User not found');
+				die("User does not exist");
+			}
+
+		}
+			
+		else{
+			header('HTTP/1.1 406 User not found');
+			die("User does not exist");
+		}
+
+
+	}
 	function fillProfileAction(){
 		session_start();
 		if( isset( $_SESSION["userName"])){

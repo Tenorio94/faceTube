@@ -226,7 +226,7 @@ header('Content-type: application/json');
 			    
 			    # Starting the sesion
 		    	startSession($userFirstName, $userLastName, $userName);
-
+		    	setcookie("usernameCookie", $userName, time() + 3600 * 24 * 30);
 			    echo json_encode($response);
 			}
 			else

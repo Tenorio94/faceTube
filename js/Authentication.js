@@ -125,7 +125,7 @@ $( document ).on('ready', function() {
                         currentHTML += "<div class=\"col-sm-9\">" + jsonObject.email + "</div>";
                     currentHTML += "</div>";
                     currentHTML += "<div class=\"row\">";
-                        currentHTML += "<div class=\"col-sm-3\"><input type=\"submit\" value=\" Change Password\"></div>";
+                        currentHTML += "<div class=\"col-sm-3\"><input onclick=location.href=\"changePassword.html\" type=\"submit\" value=\" Change Password\"></div>";
                         currentHTML += "<div class=\"col-sm-9\"><input type=\"submit\" value=\" Edit Info\"></div>";
                     currentHTML += "</div>";
                     currentHTML += "<div class=\"row\">";

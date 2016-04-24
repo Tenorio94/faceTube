@@ -19,6 +19,34 @@
 			}
 	}
 
+	function friendRequestDL($username){
+
+		$conn = connect();
+		if($conn != null){
+
+			$sql = "SELECT currentUser FROM request WHERE askedUser = '$username' and status = 'P'";
+			$result = $conn->query($sql);
+			//$response = array();
+			 if($result->num_rows > 0)
+			{	
+				//echo $result->num_rows;
+				 while($row = $result->fetch_assoc())
+				 { 
+				     //array_push($response, array("currentUser" => $row['currentUser']);
+				 	$response = array('currentUser' => $row['currentUser']);
+						
+				 }
+				return $response;
+			 }
+			else
+			{
+				
+				header('HTTP/1.1 406 User not found');
+				die("User does not exist");
+			}
+		}
+	}
+
 	function getVideos($username){
 		$conn = connect();
 

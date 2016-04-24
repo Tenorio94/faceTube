@@ -21,6 +21,32 @@ header('Content-type: application/json');
 					break;
 		case "DISPLAYVIDEOS": displayVideos();
 					break;
+		case "FRIENDREQUESTS":friendRequest();
+			break;
+	}
+
+	function friendRequest(){
+		
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+			
+			$result = friendRequestDL($username);
+			//echo $result;
+
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 User not found');
+				die("User does not exist");
+			}
+
+		}
+		else{
+			header('HTTP/1.1 406 User not found');
+			die("User does not exist");
+		}
 	}
 
 	function displayVideos(){

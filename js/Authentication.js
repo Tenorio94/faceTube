@@ -204,4 +204,37 @@ $( document ).on('ready', function() {
             }
         });
     });
+
+    var flagComment = 0;
+    $("#friendRq").on("click",function(){
+        var jsonObj = {
+            "action"  : "FRIENDREQUESTS"
+        };
+        $.ajax({
+            type: "POST",
+            url: "data/applicationLayer.php",
+            dataType: "json",
+            data:jsonObj,
+            contentType: 'application/x-www-form-urlencoded',
+            success : function(jsonData) {
+                var currentHTML = "";
+                if(flagComment == 0){
+                    //for(var i = 0; i <= jsonData.length - 1; i++)
+                   // {
+                        currentHTML += "<tr>";
+                            currentHTML += "<td width=25%>" + jsonData.currentUser+"</td>";
+                        currentHTML += "</tr>";
+                        $("#tableSuggested").append(currentHTML);
+                        currentHTML = "";
+                        flagComment = 1;
+                    //}
+                }
+            },
+            error : function (errorMsg){
+                alert(errorMsg.statusText);
+            }
+
+        });
+    });
+
 });

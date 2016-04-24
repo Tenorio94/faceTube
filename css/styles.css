@@ -57,6 +57,14 @@ a:active {
     color:white;
 }
 
+#tableTitle{
+    text-align: center;
+    font-size: 200%;
+    font-weight: bolder;
+    padding-bottom: 15px;
+    color: rgb(97,146,63);
+}
+
 #head{
 	background-color: rgb(47,6,62);
 }

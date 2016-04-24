@@ -41,6 +41,40 @@ $( document ).on('ready', function() {
             }
         });
     });
+
+    $("#glyphSearch").on("click", function(e){
+    e.preventDefault();
+        var dataToSendSearch = {
+            "action" : "DISPLAYVIDEOS"
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "data/applicationLayer.php",
+            data: dataToSendSearch,
+            dataType: "json",
+            success: function(sessionObjJson)
+            {
+                var currentHTML = "";
+                    currentHTML += "<tr>";
+                        currentHTML += "<td id=\"tableTitle\">" + sessionObjJson.titleVideo + "</td>";
+                    currentHTML += "</tr>";
+                    currentHTML += "<tr>";
+                        var link = sessionObjJson.linkVideo;
+                        link = link.replace("watch?v=", "embed/")
+                        currentHTML += "<td><iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\" src=\"" +link+ "\" frameborder=\"0\"</td>";
+                    currentHTML += "</tr>";
+                    $("#tableVideos").append(currentHTML);
+                    currentHTML = "";
+            },
+            error: function(errorMsg)
+            {
+                alert("No videos to show");
+                //window.location.replace('login.html');
+            }
+        });
+    });
+
     $("#registerButton").on("click", function(){
                 var jsonObject = {
                     "firstName" : $("#fName").val(),

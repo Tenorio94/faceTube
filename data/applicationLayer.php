@@ -19,7 +19,27 @@ header('Content-type: application/json');
 					break;
 		case "POSTVIDEO" : postVideo();
 					break;
+		case "DISPLAYVIDEOS": displayVideos();
+					break;
 	}
+
+	function displayVideos(){
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+
+			$result = getVideos($username);
+
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 User not found');
+				die("User does not exist");
+			}
+		}
+	}
+
 	function postVideo(){
 
 		session_start();

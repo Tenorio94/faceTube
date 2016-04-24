@@ -18,6 +18,29 @@ $( document ).on('ready', function() {
         }
 
     });
+    $("#logout").on("click", function(e){
+    e.preventDefault();
+        var dataToSendDSession = {
+            "action" : "DELETESESSION"
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "data/applicationLayer.php",
+            data: dataToSendDSession,
+            dataType: "json",
+            success: function(sessionObjJson)
+            {
+                alert("Hope to see you again");
+                window.location.replace('login.html');
+            },
+            error: function(errorMsg)
+            {
+                alert("SessionExpired");
+                window.location.replace('login.html');
+            }
+        });
+    });
     $("#registerButton").on("click", function(){
                 var jsonObject = {
                     "firstName" : $("#fName").val(),

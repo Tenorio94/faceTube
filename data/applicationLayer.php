@@ -12,6 +12,22 @@ header('Content-type: application/json');
 						break;
 		case 'COOKIES' : initCookies();
 						break;
+		case "DELETESESSION": deleteSession();
+							  break;
+	}
+	function deleteSession(){
+		session_start();
+		if( isset( $_SESSION["userName"]))
+		{
+			unset($_SESSION["userName"]);
+			session_destroy();
+			echo json_encode(array('success' => 'Session deleted'));
+		}
+		else
+		{
+			header('HTTP/1.1 406 Session has expired, please login again');
+			die(json_encode(array('message' => 'Session expired')));
+		}
 	}
 # Action to register a user
 	function registerAction()
@@ -122,7 +138,7 @@ header('Content-type: application/json');
 		    	$response = array("status" => "COMPLETE");   
 			    
 			    # Starting the sesion
-		    	# startSession($result['fName'], $result['lName'], $userName);
+		    	startSession($userFirstName, $userLastName, $userName);
 
 			    echo json_encode($response);
 			}

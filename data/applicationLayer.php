@@ -23,6 +23,45 @@ header('Content-type: application/json');
 					break;
 		case "FRIENDREQUESTS":friendRequest();
 			break;
+		case "SuggestedFriends": displaySuggestedFriends();
+			 break; 
+		case "ADDFRIEND": addFriendAL();
+					break;
+	}
+	function addFriendAL(){
+		session_start();
+		
+		if(isset($_SESSION["userName"])){
+		 	$userName = $_SESSION["userName"];
+		 	$sendUsername = $_POST["username"];
+			$result = sendFriendRequest($userName, $sendUsername);
+
+		 	if($result["statusText"] == "SUCCESS"){
+		 		$finalResponse = "Friend Request Sent!";
+				echo json_encode($finalResponse);
+		 	}
+		 	else{
+		 		header("HTTP/1.1 408 Request not sent");
+		 		die("Friend Request was not sent!");
+		 	}
+		 }
+	}
+	function displaySuggestedFriends(){
+		session_start();
+		if(isset($_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+
+			$result = displaySuggestedFriendsDL($username);
+			
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 User not found');
+				die("User does not exist");
+
+			}
+		}
 	}
 
 	function friendRequest(){

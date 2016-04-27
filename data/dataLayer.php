@@ -1,4 +1,5 @@
 <?php
+
 	function connect()
 	{
 			$servername = "localhost";
@@ -17,6 +18,34 @@
 			{
 				return $connection;
 			}
+	}
+	function displaySuggestedFriendsDL($username){
+		$conn = connect();
+		if($conn != null){
+			//$sql = "SELECT username FROM profile WHERE username NOT IN  (SELECT askedUser FROM request WHERE currentUser = '$username' and status = 'A') 
+			//AND NOT IN  (SELECT currentUser FROM request WHERE askedUser  = '$username' and status = 'A')";
+			//$sql = "SELECT username FROM profile WHERE username  WHERE username IN (SELECT currentUser FROM request where askedUser = '$username')"; 
+			$sql = "SELECT username FROM profile WHERE username <> '$username'";
+			$result = $conn->query($sql);
+
+
+			$response = array();
+			 if($result->num_rows > 0)
+			{	
+				 while($row = $result->fetch_assoc())
+				 { 
+				     array_push($response, array("username" => $row['username']));
+				 }
+
+				return $response;
+			 }
+			else
+			{
+				 
+				header('HTTP/1.1 406 User not found');
+				die("User does not exist");
+			}
+		}
 	}
 
 	function friendRequestDL($username){
@@ -225,6 +254,24 @@
         }
     }
 
+	 function sendFriendRequest($senderU, $receiverU){
+	 		$conn = connect();
+
+	 		if($conn != null){
+	 			$sql = "INSERT INTO request(currentUser, askedUser, status)
+	 					VALUES ('$senderU', '$receiverU', 'P')";
+	 			$result = $conn -> query($sql);
+
+	 			if($result === TRUE){
+	 				$response = array("statusText" => "SUCCESS");
+	 				return $response;
+	 			}
+	 			else{
+	 				$response = array("statusText" => "FAILURE");
+	 				return $response;
+	 			}
+	 		}
+	 	}
 
 
 

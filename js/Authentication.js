@@ -233,5 +233,63 @@ $( document ).on('ready', function() {
             alert(errorMsg.statusText);
         }
     });
+    var flagSugFriend = 0; 
+    var dataToSend = {
+        "action" : "SuggestedFriends"
+    };
+    $.ajax({
+        url: "data/applicationLayer.php",
+            type: "POST",
+            data: dataToSend,
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded",
+            success: function(jsonObject)
+            {
+                var currentHTML = "";
+                if(flagSugFriend == 0){
+                    for(var i = 0; i <= jsonObject.length - 1; i++)
+                    {
+                        currentHTML += "<tr>";
+                            currentHTML += "<td width=25% class=username>" + jsonObject[i].username+"</td>";
+                             currentHTML += "<td width=25% class=addButton><input id= sendRequest type=submit  value= Send ></td>";
+                             currentHTML += "</br>";
+                        currentHTML += "</tr>";
+                        $("#tableSuggested").append(currentHTML);
+                        currentHTML = "";
+                        flagComment = 1;
+                    }
+                }
+
+            },
+             error: function(errorMsg)
+            {
+                alert("Unable to appenddddd");
+            }
+
+
+    });
+  $("#tableSuggested").on("click",".addButton", function(){
+        var dataToSendAddFriend = {
+            "action": "ADDFRIEND",
+            "username": $(this).parent().find("td.username").text()
+        }
+        console.log(dataToSendAddFriend);
+        $.ajax({
+            url: "data/applicationLayer.php",
+            type: "POST",
+            data: dataToSendAddFriend,
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded",
+            success: function(jsonObject){
+                alert("Friend Request Sent!");
+                window.location.replace("home.html");
+            },
+            error: function(errorMsg)
+            {
+                alert("Error processing request");
+            }
+        });
+    });
+
 
 });

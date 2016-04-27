@@ -42,8 +42,8 @@ $( document ).on('ready', function() {
         });
     });
 
-    $("#glyphSearch").on("click", function(e){
-    e.preventDefault();
+    // $("#glyphSearch").on("click", function(e){
+    // e.preventDefault();
         var dataToSendSearch = {
             "action" : "DISPLAYVIDEOS"
         };
@@ -73,7 +73,7 @@ $( document ).on('ready', function() {
                 //window.location.replace('login.html');
             }
         });
-    });
+    //});
 
     $("#registerButton").on("click", function(){
                 var jsonObject = {
@@ -154,8 +154,8 @@ $( document ).on('ready', function() {
 
 //JSON
     var flag = 0;
-    $( "#profile" ).on('click', function(e) {
-        e.preventDefault();
+    //$( "#profile" ).on('click', function(e) {
+        //e.preventDefault();
         var dataToSendProfile = {
             "action" : "PROFILEFILLING"
         };   
@@ -203,7 +203,7 @@ $( document ).on('ready', function() {
                 //print("errorMsg");
             }
         });
-    });
+    //});
 
     var flagComment = 0;
     $("#friendRq").on("click",function(){

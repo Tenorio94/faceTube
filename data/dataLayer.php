@@ -19,6 +19,51 @@
 				return $connection;
 			}
 	}
+
+	function rejectFriendRequest($currentUserU, $sendingUserU){
+		$conn = connect();
+
+		if($conn != null){
+			$sql3 = "DELETE FROM Request WHERE askedUser = '$currentUserU' AND currentUser = '$sendingUserU'";
+			$result3 = $conn -> query($sql3);
+
+			if($result3 === TRUE){
+				$response = array("statusText" => "SUCCESS");
+				return $response;
+			}
+			else{
+				$response = array("statusText" => "FAILURE");
+				return $response;
+			}
+		}
+	}
+
+	function acceptFriendRequest($currentUserU, $sendingUserU){
+		$conn = connect();
+
+		if($conn != null){
+			$sql = "INSERT INTO Request(askedUser, currentUser, status)
+					VALUES('$currentUserU', '$sendingUserU', 'A')";
+			$result = $conn -> query($sql);
+
+			$sql2 = "INSERT INTO Request(askedUser, currentUser, status)
+					VALUES('$sendingUserU', '$currentUserU', 'A')";
+			$result2 = $conn -> query($sql2);
+
+			$sql3 = "DELETE FROM Request WHERE askedUser = '$currentUserU' AND currentUser = '$sendingUserU' AND status = 'P'";
+			$result3 = $conn -> query($sql3);
+
+			if(($result === TRUE) && ($result2 === TRUE) && ($result3 === TRUE)){
+				$response = array("statusText" => "SUCCESS");
+				return $response;
+			}
+			else{
+				$response = array("statusText" => "FAILURE");
+				return $response;
+			}
+		}
+	}
+	
 	function displaySuggestedFriendsDL($username){
 		$conn = connect();
 		if($conn != null){

@@ -22,12 +22,59 @@ header('Content-type: application/json');
 		case "DISPLAYVIDEOS": displayVideos();
 					break;
 		case "FRIENDREQUESTS":friendRequest();
-			break;
-		case "SuggestedFriends": displaySuggestedFriends();
-			 break; 
+					break;
+		case "SUGGESTEDFRIENDS": displaySuggestedFriends();
+			 		break; 
 		case "ADDFRIEND": addFriendAL();
 					break;
+		case "ACCEPTREQUEST": acceptRequest();
+					break;
+		case "REJECTREQUEST": rejectRequest();
+					break;
 	}
+
+	function rejectRequest(){
+		session_start();
+		if(isset($_SESSION["userName"])){
+			$userName = $_SESSION["userName"];
+			$sendingUsername = $_POST["username"];
+
+			$result = rejectFriendRequest($userName, $sendingUsername);
+
+			if($result["statusText"] == "SUCCESS"){
+				$finalResponse = "Friend Request Rejected!";
+
+				echo json_encode($finalResponse);
+			}
+			else{
+				header("HTTP/1.1 408 Request not sent");
+				die("Friend Request rejectance failed!");
+			}
+		}
+	}
+
+	function acceptRequest(){
+		session_start();
+		if(isset($_SESSION["userName"])){
+			$userName = $_SESSION["userName"];
+			$sendingUsername = $_POST["username"];
+
+			//echo $sendingUsername;
+
+			$result = acceptFriendRequest($userName, $sendingUsername);
+
+			if($result["statusText"] == "SUCCESS"){
+				$finalResponse = "Friend Request Accepted!";
+
+				echo json_encode($finalResponse);
+			}
+			else{
+				header("HTTP/1.1 408 Request not sent");
+				die("Friend Request acceptance failed!");
+			}
+		}
+	}
+	
 	function addFriendAL(){
 		session_start();
 		

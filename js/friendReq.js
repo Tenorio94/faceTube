@@ -21,7 +21,7 @@ $(document).ready(function(){
 
      var flagSugFriend = 0; 
     var dataToSend = {
-        "action" : "SuggestedFriends"
+        "action" : "SUGGESTEDFRIENDS"
     };
     $.ajax({
         url: "data/applicationLayer.php",
@@ -49,13 +49,13 @@ $(document).ready(function(){
             },
              error: function(errorMsg)
             {
-                alert("Unable to appenddddd");
+                alert("Unable to append");
             }
 
 
     });
 
-    $("#tableSuggested").on("click",".addButton", function(){
+    $("#strangers").on("click",".addButton", function(){
         var dataToSendAddFriend = {
             "action": "ADDFRIEND",
             "username": $(this).parent().find("td.username").text()
@@ -69,7 +69,7 @@ $(document).ready(function(){
             contentType: "application/x-www-form-urlencoded",
             success: function(jsonObject){
                 alert("Friend Request Sent!");
-                window.location.replace("home.html");
+                //window.location.replace("home.html");
             },
             error: function(errorMsg)
             {
@@ -80,7 +80,7 @@ $(document).ready(function(){
 
     var flagComment = 0;
     var jsonObj = {
-        "action"  : "FRIENDREQUESTS"
+        "action": "FRIENDREQUESTS"
     };
     $.ajax({
         type: "POST",
@@ -90,22 +90,19 @@ $(document).ready(function(){
         contentType: 'application/x-www-form-urlencoded',
         success : function(jsonData) {
             var currentHTML = "";
-            if(flagComment == 0){
-                for(var i = 0; i <= jsonData.length - 1; i++)
-                {
-                    currentHTML += "<tr>";
-                        currentHTML += "<td width=25% class=username>" + jsonData[i].currentUser+"</td>";
-                        currentHTML += "<td width=20% class=acceptButton><input id= accept type=  submit  value= Accept ></td>"
-                        currentHTML += "<td width=20% class=rejectButton><input id= decline type=  submit  value= Decline ></td>"; 
-                    currentHTML += "</tr>";
-                    $("#tableSuggested").append(currentHTML);
-                    currentHTML = "";
-                    flagComment = 1;
-                }
+            for(var i = 0; i <= jsonData.length - 1; i++)
+            {
+                currentHTML += "<tr>";
+                    currentHTML += "<td width=25% class=username>" + jsonData[i].currentUser+"</td>";
+                    currentHTML += "<td width=20% class=acceptButton><input id= accept type=  submit  value= Accept ></td>"
+                    currentHTML += "<td width=20% class=rejectButton><input id= decline type=  submit  value= Decline ></td>"; 
+                currentHTML += "</tr>";
+                $("#tableSuggested").append(currentHTML);
+                currentHTML = "";
             }
         },
         error : function (errorMsg){
-            alert(errorMsg.statusText);
+            alert("No pending requests to be accepted.");
         }
     });
 
@@ -123,7 +120,7 @@ $(document).ready(function(){
             contentType: "application/x-www-form-urlencoded",
             success: function(jsonObject){
                 alert("Friend Request Rejected!");
-                window.location.replace("home.html");
+                //window.location.replace("home.html");
             },
             error: function(errorMsg)
             {
@@ -153,6 +150,10 @@ $(document).ready(function(){
                 alert("Error processing request");
             }
         });
+    });
+
+    $("#goPostVideo").on('click', function(){
+        window.location.replace("postVideo.html");
     });
 
 });

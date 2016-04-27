@@ -63,6 +63,8 @@ a:active {
     font-weight: bolder;
     padding-bottom: 15px;
     color: rgb(97,146,63);
+    border-style: groove;
+    border-color: rgb(97,146,63);
 }
 
 #head{
@@ -85,11 +87,18 @@ a:active {
 
 #tableVideos{
     margin: auto;
+    margin-bottom: 5%;
 }
 
 
-#tableTitle{
-    border-style: groove;
+#tableRating{
+    text-align: right;
+    font-size: 140%;
+}
+
+.rating{
+    font-weight: bold;
+    padding-bottom: 5%;
 }
 
 a .post{

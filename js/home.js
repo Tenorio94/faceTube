@@ -38,13 +38,13 @@ $(document).ready(function(){
                 currentHTML += "</tr>";
                 currentHTML += "</tr>";
                 currentHTML += "<tr class=\"tableElement\">";
-                    currentHTML += "<td id=\"tableRating\"> asdfasfasdf " + sessionObjJson[i].rating + "</td>";
+                    currentHTML += "<td id=\"tableRating\"> <span class=\"rating\">Popularity</span>: " + sessionObjJson[i].rating + "/5</td>";
                 currentHTML += "</tr>";
                 currentHTML += "<tr class=\"tableElement\">";
                     var link = sessionObjJson[i].linkVideo;
                     link = link.replace("watch?v=", "embed/")
-                    currentHTML += "<td><iframe class= \"video\" id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"490\" src=\"" +link+ "\" frameborder=\"0\"</td>";
-                
+                    currentHTML += "<td><iframe class= \"video\" id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"440\" src=\"" +link+ "\" frameborder=\"0\"</td>";
+                currentHTML += "&nbsp;"
                 $("#tableVideos").append(currentHTML);
                 currentHTML = "";
             }

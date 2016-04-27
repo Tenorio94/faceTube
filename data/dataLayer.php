@@ -70,7 +70,7 @@
 			//$sql = "SELECT username FROM profile WHERE username NOT IN  (SELECT askedUser FROM request WHERE currentUser = '$username' and status = 'A') 
 			//AND NOT IN  (SELECT currentUser FROM request WHERE askedUser  = '$username' and status = 'A')";
 			//$sql = "SELECT username FROM profile WHERE username  WHERE username IN (SELECT currentUser FROM request where askedUser = '$username')"; 
-			$sql = "select username from profile where username <> '$username' and username not in (select currentUser from request where askedUser = '$username' and status = 'A')";
+			$sql = "SELECT username FROM profile WHERE username <> '$username' AND username not IN (SELECT currentUser FROM request WHERE askedUser = '$username' AND status = 'A')";
 			$result = $conn->query($sql);
 
 
@@ -137,7 +137,7 @@
 			{		
 				while($row = $result->fetch_assoc())
 				 {
-					$response = array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo']);
+					$response = array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating']);
 				}
 				return $response;
 			}

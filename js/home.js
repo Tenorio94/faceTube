@@ -39,6 +39,9 @@ $(document).ready(function(){
                     link = link.replace("watch?v=", "embed/")
                     currentHTML += "<td><iframe class= \"video\" id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"490\" src=\"" +link+ "\" frameborder=\"0\"</td>";
                 currentHTML += "</tr>";
+                currentHTML += "<tr class=\"tableElement\">";
+                    currentHTML += "<td id=\"tableRating\">" + sessionObjJson.rating + "</td>";
+                currentHTML += "</tr>";
                 $("#tableVideos").append(currentHTML);
                 currentHTML = "";
         },

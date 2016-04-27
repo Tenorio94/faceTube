@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>FaceTUBE - Ranked Videos</title>
+	<title>FaceTUBE - Home</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="js/Authentication.js" type="text/javascript"> </script>
-	<script src="js/home.js" type="text/javascript"> </script>
+	<!--<script src="js/Authentication.js" type="text/javascript"> </script>-->
+	<script src="js/myVideos.js" type="text/javascript"> </script>
+	<!--<script src="js/friendReq.js" type="text/javascript"> </script>-->
 	<link href="css/styles.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
@@ -36,14 +37,14 @@
 	</div>
 	<div class="container" id="body">
 		<div class="row">
-			<div class="col-sm-4">Suggested Friends</div>
-		  	<div class="col-sm-8">
-		  		<div class = "row">
-		  			<div class="col-sm-8">
-			  			<h1> My Ranked Videos </h1>
-			  		</div>
-				</div>
-			</div>
+		  <div class="col-sm-12">
+		  	<h2 class="header">My Videos</h2>
+		  	<table id="tableVideos">
+				  <tr>
+				  	<td></td>
+				  </tr>
+			  </table>
+		  </div>
 		</div>
 	</div>
 	<div class="container" id="footer2">

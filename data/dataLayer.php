@@ -125,6 +125,34 @@
 		}
 	}
 
+	
+	function getFriendVideos($username){
+		$conn = connect();
+
+		if($conn != null){
+			$sql = "SELECT * FROM video WHERE username <> '$username' AND
+			 username  IN (SELECT currentUser FROM request WHERE askedUser = '$username' AND status = 'A')";
+
+			$result = $conn->query($sql);
+			$response = array();
+
+			if($result->num_rows > 0)
+			{		
+				while($row = $result->fetch_assoc())
+				 {
+				 	array_push($response, array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating'], 'username' => $row['username']));
+					//$response = array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating']);
+				}
+				return $response;
+			}
+			else
+			{
+				header('HTTP/1.1 406 User not found');
+				die("User does not exist");
+			}
+		}
+	}
+
 	function getVideos($username){
 		$conn = connect();
 

@@ -19,7 +19,7 @@ header('Content-type: application/json');
 					break;
 		case "POSTVIDEO" : postVideo();
 					break;
-		case "DISPLAYVIDEOS": displayVideos();
+		case "DISPLAYMYVIDEOS": displayVideos();
 					break;
 		case "FRIENDREQUESTS":friendRequest();
 					break;
@@ -31,6 +31,25 @@ header('Content-type: application/json');
 					break;
 		case "REJECTREQUEST": rejectRequest();
 					break;
+		case "DISPLAYFRIENDSVIDEOS": displayMyVideos();
+					break;
+	}
+
+	function displayMyVideos(){
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+
+			$result = getFriendVideos($username);
+
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 No videos to show lala');
+				die("User does not exist");
+			}
+		}
 	}
 
 	function rejectRequest(){
@@ -74,7 +93,7 @@ header('Content-type: application/json');
 			}
 		}
 	}
-	
+
 	function addFriendAL(){
 		session_start();
 		

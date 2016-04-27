@@ -18,7 +18,8 @@ $( document ).on('ready', function() {
         }
 
     });
-    
+
+
     var flag = 0;
     //$( "#profile" ).on('click', function(e) {
         //e.preventDefault();
@@ -52,12 +53,9 @@ $( document ).on('ready', function() {
                     currentHTML += "<div class=\"col-sm-9\">" + jsonObject.email + "</div>";
                 currentHTML += "</div>";
                 currentHTML += "<div class=\"row\">";
-                    currentHTML += "<div class=\"col-sm-3\"><input onclick=location.href=\"changePassword.html\" type=\"submit\" value=\" Change Password\"></div>";
+                    currentHTML += "<div class=\"col-sm-3\"><input onclick=location.href=\"rankVideos.html\" type=\"submit\" value=\"RankedVideos\"></div>";
                     currentHTML += "<div class=\"col-sm-9\"><input type=\"submit\" value=\" Edit Info\"></div>";
-                currentHTML += "</div>";
-                currentHTML += "<div class=\"row\">";
-                    currentHTML += "<div class=\"col-sm-9\"><a href=\"rankVideos.html\" id=\" RVideos\">Videos Ranked</div>";
-                currentHTML += "</div>";                        
+                currentHTML += "</div>";                    
                 $("#ProfileContent").append(currentHTML);
                 currentHTML = "";
                 flag = 1;
@@ -68,5 +66,9 @@ $( document ).on('ready', function() {
             alert("Unable to append");
             //print("errorMsg");
         }
+    });
+
+    $("#goPostVideo").on('click', function(){
+        window.location.replace("postVideo.html");
     });
 });

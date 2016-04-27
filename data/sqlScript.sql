@@ -12,7 +12,6 @@ CREATE TABLE Profile (
 );
 
 
-
 CREATE TABLE Video(
 	username VARCHAR(30) NOT NULL,
 	title VARCHAR(30) NOT NULL, 
@@ -37,34 +36,3 @@ CREATE TABLE User(
 	FOREIGN KEY (username) REFERENCES Profile (username),
 	FOREIGN KEY (idVideo) REFERENCES Video (idVideo)
 );
-
-
-
-
-INSERT INTO Profile(fName, lName, username, passwrd,email,gender,country)
-VALUES ('Maribel','Pastrana','maripastrana','mpastrana123','mary.pastrana@gmail.com','female','Mexico'),
-		('Miriam','Pastrana','miripastrana','mpb87','miri.pastrana@gmail.com','female','Mexico'),
-		('Santos','Flores','santiagopastrana','spf540126','santiago.pastrana@gmail.com','male','Mexico'),
-		('Esther','Pastrana','estherpastrana','mpastranaabc','pastrana@gmail.com','female','Mexico'),
-		('Esther','Brito','esther','mpb87','esther@gmail.com','female','Mexico');
-
-INSERT INTO Request(currentUser,askedUser,status)
-VALUES ('maripastrana','santiago','P'),
-		('maripastrana','miripastrana','A'),
-		('santiagopastrana','miripastrana','P');
-
-
-
-INSERT INTO Profile(fName, lName, username, passwrd,email,gender,country)
-VALUES ('Esther','Pastrana','estherpastrana','mpastranaabc','pastrana@gmail.com','female','Mexico'),
-		('Esther','Brito','esther','mpb87','esther@gmail.com','female','Mexico');
-
-
-select * from Profile where ((username LIKE '%esther%') OR (email LIKE '%eshter%')) 
-AND  '%esther%' not in (select askeduser from request where currentUser = 'maripastrana');
-
-INSERT INTO Request(currentUser,askedUser,status)
-VALUES ('maripastrana','esther','P');
-
-
-

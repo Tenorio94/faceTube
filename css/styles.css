@@ -91,6 +91,11 @@ a:active {
     border-style: groove;
 }
 
+a .post{
+    padding-bottom: 10%;
+    color: rgb(97,146,63);
+}
+
 .container{
 	background-color: white;
 	font-size: 125%;

@@ -26,14 +26,18 @@
 
 			$sql = "SELECT currentUser FROM request WHERE askedUser = '$username' and status = 'P'";
 			$result = $conn->query($sql);
-			//$response = array();
+			$response = array();
 			 if($result->num_rows > 0)
 			{	
 				//echo $result->num_rows;
 				 while($row = $result->fetch_assoc())
 				 { 
-				     //array_push($response, array("currentUser" => $row['currentUser']);
-				 	$response = array('currentUser' => $row['currentUser']);
+				 	
+				    array_push($response, array('currentUser' => $row['currentUser']));
+				    //echo $response;
+				    //array_push($response, array("currentUser" => $row["currentUser"], 'actualUser' => $row['actualUser']);
+				 	//$response = array('currentUser' => $row['currentUser']);
+				 	//array_push($response, array("username" => $row['username'], 'fName' => $row['fName'], 'lName' => $row['lName']));
 						
 				 }
 				return $response;

@@ -42,8 +42,8 @@ $( document ).on('ready', function() {
         });
     });
 
-    // $("#glyphSearch").on("click", function(e){
-    // e.preventDefault();
+    //$( document ).on('ready', function() {
+    //e.preventDefault();
         var dataToSendSearch = {
             "action" : "DISPLAYVIDEOS"
         };
@@ -56,10 +56,10 @@ $( document ).on('ready', function() {
             success: function(sessionObjJson)
             {
                 var currentHTML = "";
-                    currentHTML += "<tr>";
+                    currentHTML += "<tr class=\"tableElement\">";
                         currentHTML += "<td id=\"tableTitle\">" + sessionObjJson.titleVideo + "</td>";
                     currentHTML += "</tr>";
-                    currentHTML += "<tr>";
+                    currentHTML += "<tr class=\"tableElement\">";
                         var link = sessionObjJson.linkVideo;
                         link = link.replace("watch?v=", "embed/")
                         currentHTML += "<td><iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\" src=\"" +link+ "\" frameborder=\"0\"</td>";
@@ -72,8 +72,8 @@ $( document ).on('ready', function() {
                 alert("No videos to show");
                 //window.location.replace('login.html');
             }
-        });
-    //});
+        //});
+    });
 
     $("#registerButton").on("click", function(){
                 var jsonObject = {
@@ -206,35 +206,32 @@ $( document ).on('ready', function() {
     //});
 
     var flagComment = 0;
-    $("#friendRq").on("click",function(){
-        var jsonObj = {
-            "action"  : "FRIENDREQUESTS"
-        };
-        $.ajax({
-            type: "POST",
-            url: "data/applicationLayer.php",
-            dataType: "json",
-            data:jsonObj,
-            contentType: 'application/x-www-form-urlencoded',
-            success : function(jsonData) {
-                var currentHTML = "";
-                if(flagComment == 0){
-                    //for(var i = 0; i <= jsonData.length - 1; i++)
-                   // {
-                        currentHTML += "<tr>";
-                            currentHTML += "<td width=25%>" + jsonData.currentUser+"</td>";
-                        currentHTML += "</tr>";
-                        $("#tableSuggested").append(currentHTML);
-                        currentHTML = "";
-                        flagComment = 1;
-                    //}
+    var jsonObj = {
+        "action"  : "FRIENDREQUESTS"
+    };
+    $.ajax({
+        type: "POST",
+        url: "data/applicationLayer.php",
+        dataType: "json",
+        data:jsonObj,
+        contentType: 'application/x-www-form-urlencoded',
+        success : function(jsonData) {
+            var currentHTML = "";
+            if(flagComment == 0){
+                for(var i = 0; i <= jsonData.length - 1; i++)
+                {
+                    currentHTML += "<tr>";
+                        currentHTML += "<td width=25%>" + jsonData[i].currentUser+"</td>";
+                    currentHTML += "</tr>";
+                    $("#tableSuggested").append(currentHTML);
+                    currentHTML = "";
+                    flagComment = 1;
                 }
-            },
-            error : function (errorMsg){
-                alert(errorMsg.statusText);
             }
-
-        });
+        },
+        error : function (errorMsg){
+            alert(errorMsg.statusText);
+        }
     });
 
 });

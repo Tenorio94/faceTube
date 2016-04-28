@@ -53,7 +53,7 @@ $( document ).on('ready', function() {
                     currentHTML += "<div class=\"col-sm-9\">" + jsonObject.email + "</div>";
                 currentHTML += "</div>";
                 currentHTML += "<div class=\"row prof\">";
-                    currentHTML += "<div class=\"col-sm-3\"><button type=\"button\" class=\"btn btn-default btn-sm button\" onclick=location.href=\"rankVideos.html\"> Ranked Videos</button></div>";
+                    //currentHTML += "<div class=\"col-sm-3\"><button type=\"button\" class=\"btn btn-default btn-sm button\" onclick=location.href=\"rankVideos.html\"> Ranked Videos</button></div>";
                     currentHTML += "<div class=\"col-sm-9\"><button type=\"button\" class=\"btn btn-default btn-sm button\" onclick=location.href=\"myVideos.html\"> My Videos</button></div>";
                 currentHTML += "</div>";                    
                 $("#ProfileContent").append(currentHTML);

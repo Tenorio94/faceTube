@@ -31,7 +31,7 @@
 
 			if($result->num_rows > 0){	
 				 while($row = $result->fetch_assoc()){
-				    array_push($response, array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating'], 'username' => $row['username']));
+				    array_push($response, array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating'], 'username' => $row['username'], 'idVideo' => $row['idVideo']));
 				 }
 
 				return $response;
@@ -265,7 +265,7 @@
 			{		
 				while($row = $result->fetch_assoc())
 				 {
-				 	array_push($response, array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating'], 'username' => $row['username']));
+				 	array_push($response, array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating'], 'username' => $row['username'], 'idVideo' => $row['idVideo']));
 					//$response = array('titleVideo' => $row['title'], 'linkVideo' => $row['linkVideo'], 'rating' => $row['rating']);
 				}
 				return $response;

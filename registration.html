@@ -29,7 +29,8 @@
 			  		<div class="input_label user">
 				  		<label for="fname"> First Name </label>
 				  	</div>
-				  		<input class="textinput" type="text" id="fName" placeholder="First Name" size="30" value=""> 
+				  		<input class="textinput" type="text" id="fName" placeholder="First Name" size="30" value="">
+				  		<span id="errFirstName"></span>
 			  	</div>
 		  	</div>
 		  	<div class="row boxTag">
@@ -37,7 +38,8 @@
 			  		<div class="input_label user">
 				  		<label for="lname"> Last Name </label>
 				  	</div>
-				  		<input class="textinput" type="text" id="lName" placeholder="Last Name" size="30" value=""> 
+				  		<input class="textinput" type="text" id="lName" placeholder="Last Name" size="30" value="">
+				  		<span id="errLastName"></span>
 			  	</div>
 		  	</div>
 		  	<div class="row boxTag">
@@ -45,7 +47,8 @@
 			  		<div class="input_label user">
 				  		<label for="username"> Username </label>
 				  	</div>
-				  		<input class="textinput" type="text" id="username" placeholder="Username" size="30" value=""> 
+				  		<input class="textinput" type="text" id="usernameReg" placeholder="Username" size="30" value="">
+				  		<span id="errUsername"></span>
 			  	</div>
 		  	</div>
 		  	<div class="row boxTag">
@@ -54,6 +57,7 @@
 				  		<label for="email"> E-Mail </label>
 				  	</div>
 				  		<input class="textinput" type="text" id="email" placeholder="E-mail" size="30" value=""> 
+				  		<span id="errEmail"></span>
 			  	</div>
 		  	</div>
 		  	<div class="row boxTag">
@@ -61,7 +65,8 @@
 			  		<div class="input_label user">
 				  		<label for="password"> Password </label>
 				  	</div>
-				  		<input class="textinput" type="password" id="password" placeholder="**************" size="30" value=""> 
+				  		<input class="textinput" type="password" id="password" placeholder="**************" size="30" value="">
+				  		<span id="errPassword"></span>
 			  	</div>
 		  	</div>
 		  	<div class="row boxTag">
@@ -69,7 +74,8 @@
 			  		<div class="input_label user">
 				  		<label for="passwordConfirm">Confirm</label>
 				  	</div>
-				  		<input class="textinput" type="password" id="passwordConfirmation" placeholder="**************" size="30" value=""> 
+				  		<input class="textinput" type="password" id="passwordConfirmation" placeholder="**************" size="30" value="">
+				  		<span id="errPasswordCon"></span>
 			  	</div>
 		  	</div>
 		  	<div class="row boxTag">
@@ -97,6 +103,7 @@
                         <option value="United Kingdom">United Kingdom</option>
                         <option value="United States">United States</option>
 				  </select>
+				  <span id="countryError"></span>
 				</div> 
 			 </div>
 			 <div class="row boxTag">
@@ -106,8 +113,9 @@
 				  	</div>
 				  		<label class="radio-inline"><input type="radio" value="masculine" name="gender">Male</label>
 						<label class="radio-inline"><input type="radio" value="feminine" name="gender">Female</label>
-						<label class="radio-inline"><input type="radio" value="not" name="gender">Prefer not to mention</label>
+						<label class="radio-inline"><input type="radio" value="not" name="gender">Prefer not to mention</label>						
 			  	</div>
+			  	<span id="errGender"></span>
 		  	</div>
 		  	<button type="button" class="btn btn-default btn-sm button registration" id="registerButton">Register</button>
 		  	<button type="button" class="btn btn-default btn-sm button cancel"><a href="login.html">Cancel</a></button>

@@ -19,6 +19,42 @@ $(document).ready(function(){
 
     });
 
+    $( "#glyphSearch" ).on('click', function(){
+        var dataToSendSearch = {
+            "action" : "SEARCHFRIENDS",
+            "textSearch": $(".textinput").val()
+        }
+
+        $.ajax({
+            url: "data/applicationLayer.php",
+            type: "POST",
+            data: dataToSendSearch,
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded",
+            success: function(jsonObject)
+            {
+                var currentHTML = "";
+                $("tr").remove(".temporal");
+                for(var i = 0; i <= jsonObject.length - 1; i++)
+                { 
+                    currentHTML += "<tr class=temporal>";
+                        currentHTML += "<td width=25% class=username>" + jsonObject[i].username    +"</td>";
+                        currentHTML += "<td width=25% class=firstName>" +    jsonObject[i].fName+"</td>";
+                        currentHTML += "<td width=25% class=lastName>" + jsonObject[i].lName     +"</td>";
+                        currentHTML += "<td width=25% class=addButton><input id= sendRequest type=submit  value= Send ></td>";
+                    currentHTML += "</tr>";
+                    $("#strangers").append(currentHTML);
+                    currentHTML = "";
+                }
+            },
+            error: function(errorMsg)
+            {
+                alert("Error loading friends");
+            }
+        });
+    });
+
+
      var flagSugFriend = 0; 
     var dataToSend = {
         "action" : "SUGGESTEDFRIENDS"
@@ -35,7 +71,7 @@ $(document).ready(function(){
                 if(flagSugFriend == 0){
                     for(var i = 0; i <= jsonObject.length - 1; i++)
                     {
-                        currentHTML += "<tr>";
+                        currentHTML += "<tr class=temporal>";
                             currentHTML += "<td width=25% class=username>" + jsonObject[i].username+"</td>";
                              currentHTML += "<td width=25% class=addButton><input id= sendRequest type=submit  value= Send ></td>";
                              currentHTML += "</br>";
@@ -51,8 +87,6 @@ $(document).ready(function(){
             {
                 alert("Unable to append");
             }
-
-
     });
 
     $("#strangers").on("click",".addButton", function(){

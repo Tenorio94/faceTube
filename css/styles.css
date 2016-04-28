@@ -92,13 +92,30 @@ a:active {
 
 
 #tableRating{
-    text-align: right;
+    text-align: center;
+    vertical-align: top;
     font-size: 140%;
+    margin-left: -15px;
+}
+
+.idVideo{
+    font-size: 1%;
+}
+
+.rateMe{
+    font-size: 1%;
+}
+
+.username{
+    font-size: 120%;
 }
 
 .rating{
     font-weight: bold;
     padding-bottom: 5%;
+    text-align: right;
+    padding: 2% 0;
+    vertical-align: top;
 }
 
 a .post{
@@ -167,6 +184,45 @@ a .post{
 .header{
     text-align: center;
     font-weight: bold;
+    padding-bottom: 5%;
+}
+
+.titleVideo{
+    font-size: 0%;
+    text-align: center;
+}
+
+.selectRate{
+    padding-right: 2%;
+}
+
+.foot{
+    padding-bottom: 2%;
+}
+
+.prof{
+    padding: 1% 0;
+}
+
+.rightColumn{
+    font-weight: bolder;
+    color:black;
+    font-size: 140%;
+}
+
+.lastName{
+    padding-right: 1%
+}
+
+#VideoTitle{
+    font-size: 340%;
+    text-align:center;
+}
+
+#imagee{
+    float: right;
+    position: absolute;
+    padding-top: 15%;
 }
 
 label {

@@ -33,6 +33,85 @@ header('Content-type: application/json');
 					break;
 		case "DISPLAYFRIENDSVIDEOS": displayMyVideos();
 					break;
+		case "RANKVIDEO": rankVideo();
+					break;
+		case "FRIENDSFILLING": fillFriends();
+					break;
+		case "SEARCHFRIENDS": searchFriends();
+					break;
+		case "DISPLAYSEARCHEDVIDEOS": searchVideos();
+					break;
+	}
+
+	function searchVideos(){
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+			$search = $_POST["textSearch"];
+
+			$result = getListVideos($username, $search);
+
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 No videos to show lala');
+				die("User does not exist");
+			}
+		}
+	}
+
+	function searchFriends(){
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+			$search = $_POST["textSearch"];
+
+			$result = getListStrangers($username, $search);
+
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 No videos to show lala');
+				die("User does not exist");
+			}
+		}
+	}
+
+	function fillFriends(){
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+
+			$result = findFriends($username);
+
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 No videos to show lala');
+				die("User does not exist");
+			}
+		}
+	}
+
+	function rankVideo(){
+		session_start();
+		if( isset( $_SESSION["userName"])){
+			$username = $_SESSION["userName"];
+			$idVideo = $_POST["idVideo"];
+			$userRating = $_POST["userRating"];
+			$result = updateRanking($username, $idVideo, $userRating);
+
+			if(true){
+				echo json_encode($result);
+			}
+			else{
+				header('HTTP/1.1 406 No videos to show lala');
+				die("User does not exist");
+			}
+		}
 	}
 
 	function displayMyVideos(){

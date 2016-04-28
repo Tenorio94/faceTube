@@ -70,6 +70,7 @@ $( document ).on('ready', function() {
                     }
                 });
     });
+
     $("#loginButton").on("click", function(){
                 var jsonObject = {
                     "username" : $("#username").val(),

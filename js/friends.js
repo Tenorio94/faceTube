@@ -24,7 +24,7 @@ $( document ).on('ready', function() {
     //$( "#profile" ).on('click', function(e) {
         //e.preventDefault();
     var dataToSendProfile = {
-        "action" : "PROFILEFILLING"
+        "action" : "FRIENDSFILLING"
     };   
     $.ajax({
         url: "data/applicationLayer.php",
@@ -34,31 +34,28 @@ $( document ).on('ready', function() {
         contentType: "application/x-www-form-urlencoded",
         success: function(jsonObject)
         {
-            if(flag == 0){
+            for(var i = 0; i <= jsonObject.length - 1; i++)
+            {
                 var currentHTML = "";
+                currentHTML += "<p>---------------------------------------------------</p>"
                 currentHTML += "<div class=\"row prof\">";
                     currentHTML += "<div class=\"col-sm-3 rightColumn\">Username:</div>";
-                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject.username + "</div>";
+                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject[i].username + "</div>";
                 currentHTML += "</div>";
                 currentHTML += "<div class=\"row prof\">";
                     currentHTML += "<div class=\"col-sm-3 rightColumn\">First Name:</div>";
-                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject.fName + "</div>";
+                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject[i].fName + "</div>";
                 currentHTML += "</div>";
                 currentHTML += "<div class=\"row prof\">";
                     currentHTML += "<div class=\"col-sm-3 rightColumn\">Last Name:</div>";
-                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject.lName + "</div>";
+                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject[i].lName + "</div>";
                 currentHTML += "</div>";
                 currentHTML += "<div class=\"row prof\">";
                     currentHTML += "<div class=\"col-sm-3 rightColumn\">E-mail:</div>";
-                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject.email + "</div>";
-                currentHTML += "</div>";
-                currentHTML += "<div class=\"row prof\">";
-                    currentHTML += "<div class=\"col-sm-3\"><button type=\"button\" class=\"btn btn-default btn-sm button\" onclick=location.href=\"rankVideos.html\"> Ranked Videos</button></div>";
-                    currentHTML += "<div class=\"col-sm-9\"><button type=\"button\" class=\"btn btn-default btn-sm button\" onclick=location.href=\"myVideos.html\"> My Videos</button></div>";
-                currentHTML += "</div>";                    
-                $("#ProfileContent").append(currentHTML);
+                    currentHTML += "<div class=\"col-sm-9\">" + jsonObject[i].email + "</div>";
+                currentHTML += "</div>";                   
+                $("#friendsContent").append(currentHTML);
                 currentHTML = "";
-                flag = 1;
             }
         },
         error: function(errorMsg)
